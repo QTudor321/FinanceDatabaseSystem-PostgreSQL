@@ -1,0 +1,19 @@
+This PostgreSQL-based Financial System Database models a real-world financial application involving users, employees, administrators, accounts, loans, transactions, and system logs. The schema is designed with modularity, traceability, and normalization in mind to maintain data integrity and consistency. 
+Normalization:
+-the database is normalized to Third Normal Form (3NF).
+-all tables have atomic values
+-each field holds one value
+-all attributes are dependent on the corresponding primary key
+-no main entity holds composite keys
+-no transitive dependencies exist
+Entities:
+-Users represents customers. Linked to Account. Managed by Admin.
+-Accounts are linked 1:M with Users. Holds credit and credentials.
+-Loan belongs to an account. Status constraint (Pending, Active, etc.) ensures data integrity.
+-Payment tracks installment payments toward loans.
+-Transaction types include deposit, withdrawal, transfer. Nullable Accounts supports withdrawal/deposit.
+-Employee is staff that perform actions on accounts, loans, and transactions.
+-Admin is a higher-privileged actors with permissions to manage users, logs, or system-wide features.
+-Log tracks all system actions. Optional FK enables flexible logging across all roles.
+Cardinality:
+This database supports all kinds of relationships: 1:1, 1:M, M:1 and M:M, meaning a very high variety in operations.
